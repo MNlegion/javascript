@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Weather App</title>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="container mx-auto p-8 max-w-md">
+        <h1 class="text-3xl font-semibold mb-4">Weather App</h1>
+        <div class="weather-info bg-gray-800 p-4 rounded shadow-md">
+            <label for="cityInput" class="block text-sm font-medium text-gray-300 mb-2">Enter city:</label>
+            <input type="text" id="cityInput" class="w-full border p-2 rounded bg-gray-700 focus:outline-none focus:border-blue-500" placeholder="E.g., New York">
+            <button id="getWeatherBtn" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue">Get Weather</button>
+            <div id="weatherResult" class="mt-4 text-gray-300"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
