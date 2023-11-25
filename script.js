@@ -1,4 +1,4 @@
-require('dotenv').config();
+// script.js
 
 document.addEventListener("DOMContentLoaded", function () {
     const getWeatherBtn = document.getElementById("getWeatherBtn");
@@ -16,7 +16,7 @@ function getWeather() {
         return;
     }
 
-    const apiKey = process.env.API_KEY; // Read API key from .env file
+    const apiKey = 'X';
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
     fetch(apiUrl)
@@ -25,10 +25,32 @@ function getWeather() {
             const temperature = Math.round(data.main.temp - 273.15); // Convert from Kelvin to Celsius
             const description = data.weather[0].description;
 
-            weatherResult.innerHTML = `Temperature: ${temperature}°C, Description: ${description}`;
+            // Create elements
+            const temperatureElement = document.createElement("p");
+            const descriptionElement = document.createElement("p");
+
+            // Set content and attributes
+            temperatureElement.textContent = `Temperature: ${temperature}°C`;
+            descriptionElement.textContent = `Description: ${description}`;
+
+            // Clear previous content in weatherResult div
+            weatherResult.innerHTML = "";
+
+            // Append elements to weatherResult div
+            weatherResult.appendChild(temperatureElement);
+            weatherResult.appendChild(descriptionElement);
         })
         .catch(error => {
             console.error("Error fetching weather data:", error);
-            weatherResult.innerHTML = "Error fetching weather data";
+
+            // Display error message
+            const errorElement = document.createElement("p");
+            errorElement.textContent = "Error fetching weather data";
+
+            // Clear previous content in weatherResult div
+            weatherResult.innerHTML = "";
+
+            // Append error message to weatherResult div
+            weatherResult.appendChild(errorElement);
         });
-}
+    }
